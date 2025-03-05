@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
   </head>
   <body>
     <main>
       <div class="container">
         <h1>WRITE YOUR NOTES OVER HERE</h1>
-        <div class="create-button">
+        <div class="trigger-modal-button-container">
           <button class="trigger-modal-btn">Create +</button>
         </div>
 
         <div class="notes-container"></div>
 
-        <div class="write-note-modal">
+        <div class="write-note-modal none">
           <div class="modal-container">
             <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
-            <button class="create-note">Create</button>
+            <div class="modal-buttons">
+              <div class="cancel-button-container">
+                <button class="cancel">Cancel</button>
+              </div>
+              <div class="create-note-button-container">
+                <button class="create-note">Create</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

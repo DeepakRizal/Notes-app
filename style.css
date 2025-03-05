@@ -18,10 +18,10 @@ main {
   padding-top: 20px;
 }
 
-.container .create-button .trigger-modal-btn {
+.container .trigger-modal-button-container .trigger-modal-btn {
   border: none;
   background-color: blue;
-  padding: 5px 20px;
+  padding: 8px 40px;
   color: white;
   border-radius: 5px;
   cursor: pointer;
@@ -29,8 +29,61 @@ main {
 
 .container h1 {
   color: white;
+  margin-bottom: 12px;
 }
 
 .write-note-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container {
+  background-color: gray;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.modal-container #notes {
+  width: 588px;
+  height: 393px;
+  outline: none;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: right;
+  align-items: center;
+}
+
+.cancel-button-container button {
+  border: none;
+  background-color: rgb(224, 45, 45);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-note-button-container button {
+  border: none;
+  background-color: green;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* utility classes */
+.none {
   display: none;
 }
