@@ -5,15 +5,15 @@ const create = document.querySelector(".create-note");
 const modalContainer = document.querySelector(".modal-container");
 
 triggerModalBtn.addEventListener("click", () => {
-  writeNoteModal.classList.remove("none");
+  writeNoteModal.classList.add("active");
 });
 
 cancel.addEventListener("click", () => {
-  writeNoteModal.classList.add("none");
+  writeNoteModal.classList.remove("active");
 });
 
 create.addEventListener("click", () => {
-  writeNoteModal.classList.add("none");
+  writeNoteModal.classList.remove("active");
   //write the note creation logic below
 });
 
@@ -22,5 +22,5 @@ modalContainer.addEventListener("click", (e) => {
 });
 
 writeNoteModal.addEventListener("click", () => {
-  writeNoteModal.classList.add("none");
+  writeNoteModal.classList.remove("active");
 });

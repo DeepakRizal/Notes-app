@@ -18,6 +18,10 @@ main {
   padding-top: 20px;
 }
 
+.trigger-modal-button-container {
+  margin-bottom: 20px;
+}
+
 .container .trigger-modal-button-container .trigger-modal-btn {
   border: none;
   background-color: blue;
@@ -42,12 +46,26 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.write-note-modal.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .modal-container {
   background-color: gray;
   padding: 20px;
   border-radius: 5px;
+  transform: scale(0.8);
+  transition: transform 0.3s ease-in-out;
+}
+
+.write-note-modal.active .modal-container {
+  transform: scale(1);
 }
 
 .modal-container #notes {
@@ -81,6 +99,17 @@ main {
   padding: 8px 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+/* notes container */
+.notes-container {
+  background-color: gray;
+  min-height: 70vh;
+  min-width: 60vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
 }
 
 /* utility classes */
