@@ -78,7 +78,7 @@ main {
   height: 40vh;
   outline: none;
   padding: 10px;
-  font-size: 25px;
+  font-size: 20px;
   border: none;
   border-radius: 5px;
 }
@@ -130,7 +130,8 @@ main {
   outline: none;
   border: none;
   border-radius: 5px;
-  font-size: 25px;
+  font-size: 20px;
+  width: 100%;
 }
 
 /* notes container */
@@ -142,6 +143,13 @@ main {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+}
+
+/* notes error */
+.notes-title-error,
+.notes-body-error {
+  color: red;
+  font-size: 14px;
 }
 
 /* utility classes */

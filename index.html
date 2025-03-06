@@ -21,11 +21,22 @@
           <form class="modal-form">
             <div class="notes-title-container">
               <label for="title">Title:</label>
-              <input type="text" id="title" name="title" class="title" />
+              <div>
+                <input type="text" id="title" name="title" class="title" />
+                <div class="notes-title-error"></div>
+              </div>
             </div>
             <div class="notes-body-container">
               <label for="notes">Notes:</label>
-              <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+              <div>
+                <textarea
+                  name="notes"
+                  id="notes"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+                <p class="notes-body-error"></p>
+              </div>
             </div>
             <div class="modal-buttons">
               <div class="cancel-button-container">
