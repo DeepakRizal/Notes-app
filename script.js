@@ -58,11 +58,26 @@ modalform.addEventListener("submit", (e) => {
   //   writeNoteModal.classList.remove("active");
 });
 
-//remove the error message when the user starts typing
-noteTitle.addEventListener("input", () => {
-  notesTitleError.textContent = "";
-});
+//form validation
 
-notesBody.addEventListener("input", () => {
-  notesbodyError.textContent = "";
-});
+function handleFormValidation(element, eventType, errorElement, errorTextName) {
+  if (eventType === "input") {
+    element.addEventListener(eventType, () => {
+      errorElement.textContent = "";
+    });
+  } else {
+    element.addEventListener(eventType, () => {
+      if (element.value.trim() === "") {
+        errorElement.textContent = `${errorTextName} cannot be empty!`;
+      }
+    });
+  }
+}
+
+// Apply validation to noteTitle
+handleFormValidation(noteTitle, "input", notesTitleError, "Title");
+handleFormValidation(noteTitle, "blur", notesTitleError, "Title");
+
+// Apply validation to notesBody
+handleFormValidation(notesBody, "input", notesbodyError, "Notes");
+handleFormValidation(notesBody, "blur", notesbodyError, "Notes");

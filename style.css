@@ -57,7 +57,7 @@ main {
 }
 
 .modal-form {
-  background-color: gray;
+  background-color: rgb(50, 49, 49);
   padding: 20px;
   border-radius: 5px;
   transform: scale(0.8);
@@ -81,6 +81,7 @@ main {
   font-size: 20px;
   border: none;
   border-radius: 5px;
+  background-color: rgb(182, 182, 182);
 }
 
 .modal-buttons {
@@ -118,7 +119,7 @@ main {
 .notes-title-container label,
 .notes-body-container label {
   font-weight: 700;
-  color: #1e3a8a;
+  color: lightgray;
 }
 
 .notes-body-container {
@@ -132,6 +133,7 @@ main {
   border-radius: 5px;
   font-size: 20px;
   width: 100%;
+  background-color: rgb(182, 182, 182);
 }
 
 /* notes container */
@@ -150,6 +152,7 @@ main {
 .notes-body-error {
   color: red;
   font-size: 14px;
+  font-weight: 500;
 }
 
 /* utility classes */
