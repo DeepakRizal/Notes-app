@@ -147,16 +147,52 @@ main {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-
-.notes-container .no-notes {
+.no-notes {
   text-align: center;
   padding-top: 40px;
+  grid-column: 2;
 }
 
+/* note styling */
 .note {
-  background-color: rgb(191, 188, 188);
+  background-color: rgb(215, 210, 210);
   height: 50%;
   max-height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note .description {
+  font-size: 14px;
+}
+
+.note .buttons {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.note .buttons button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.note .category {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.note .title {
+  margin-top: 20px;
 }
 
 /* notes error */
@@ -216,7 +252,7 @@ main {
 
 .delete-icon,
 .edit-icon {
-  height: 40px;
+  height: 20px;
 }
 
 /* utility classes */
