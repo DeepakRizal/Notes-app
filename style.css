@@ -149,10 +149,57 @@ main {
 
 /* notes error */
 .notes-title-error,
-.notes-body-error {
+.notes-body-error,
+.category-error {
   color: red;
   font-size: 14px;
   font-weight: 500;
+}
+
+/* category styles */
+.notes-category-container {
+  margin: 10px 0;
+}
+
+.notes-category-container label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: lightgray;
+  font-weight: 700;
+}
+
+.category-dropdown-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.category-dropdown-container select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgb(182, 182, 182);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.category-dropdown-container::after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  font-size: 12px;
+  color: #666;
+  pointer-events: none;
+}
+
+.category-dropdown-container select:focus {
+  outline: none;
 }
 
 /* utility classes */

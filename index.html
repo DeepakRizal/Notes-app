@@ -19,6 +19,7 @@
 
         <div class="write-note-modal">
           <form class="modal-form">
+            <!-- Notes title  -->
             <div class="notes-title-container">
               <label for="title">Title:</label>
               <div>
@@ -26,6 +27,25 @@
                 <div class="notes-title-error"></div>
               </div>
             </div>
+
+            <!-- notes category -->
+            <div class="notes-category-container">
+              <label for="category">Category:</label>
+
+              <div class="category-dropdown-container">
+                <select name="category" id="category" class="category">
+                  <option value="" disabled selected>Select Category</option>
+                  <option value="work">Work</option>
+                  <option value="personal">Personal</option>
+                  <option value="ideas">Ideas</option>
+                  <option value="todo">Todo</option>
+                  <option value="learning">Learning</option>
+                </select>
+              </div>
+              <p class="category-error"></p>
+            </div>
+
+            <!-- notes body -->
             <div class="notes-body-container">
               <label for="notes">Notes:</label>
               <div>
@@ -38,6 +58,8 @@
                 <p class="notes-body-error"></p>
               </div>
             </div>
+
+            <!-- buttons -->
             <div class="modal-buttons">
               <div class="cancel-button-container">
                 <button type="button" class="cancel">Cancel</button>

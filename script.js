@@ -7,17 +7,24 @@ const noteTitle = document.querySelector("#title");
 const notesBody = document.querySelector("#notes");
 const notesTitleError = document.querySelector(".notes-title-error");
 const notesbodyError = document.querySelector(".notes-body-error");
+const category = document.querySelector("#category");
+const categoryError = document.querySelector(".category-error");
 
-const note = {
-  id: null,
-  title: "",
-  note: "",
-};
-
-const notes = [];
+let notesArray = [];
 
 function generateID() {
   return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+}
+
+function createNote(id, title, note, category) {
+  const newCategory = {
+    id,
+    title,
+    note,
+    category,
+  };
+
+  notesArray = [...notesArray, newCategory];
 }
 
 triggerModalBtn.addEventListener("click", () => {
@@ -40,19 +47,67 @@ modalform.addEventListener("submit", (e) => {
   e.preventDefault();
 
   //form validation logic
-  if (noteTitle.value.trim() === "" && notesBody.value.trim() === "") {
-    notesTitleError.textContent = "title cannot be empty!";
-    notesbodyError.textContent = "notes cannot be empty!";
+  if (
+    noteTitle.value.trim() === "" &&
+    notesBody.value.trim() === "" &&
+    category.value.trim() === ""
+  ) {
+    notesTitleError.textContent = "Title cannot be empty!";
+    notesbodyError.textContent = "Notes cannot be empty!";
+    categoryError.textContent = "Please select the category";
     return;
   }
 
-  if (noteTitle.value.trim() === "" && notesBody.value.trim() !== "") {
-    notesTitleError.textContent = "title cannot be empty!";
+  if (
+    noteTitle.value.trim() === "" &&
+    notesBody.value.trim() !== "" &&
+    category.value.trim() !== ""
+  ) {
+    notesTitleError.textContent = "Title cannot be empty!";
     return;
   }
-  if (noteTitle.value.trim() !== "" && notesBody.value.trim() === "") {
-    notesbodyError.textContent = "notes cannot be empty!";
+  if (
+    noteTitle.value.trim() !== "" &&
+    notesBody.value.trim() === "" &&
+    category.value.trim() !== ""
+  ) {
+    notesbodyError.textContent = "Notes cannot be empty!";
     return;
+  }
+  if (
+    category.value.trim() === "" &&
+    notesBody.value.trim() !== "" &&
+    noteTitle.value.trim() !== ""
+  ) {
+    categoryError.textContent = "Category cannot be empty!";
+  }
+
+  if (
+    noteTitle.value.trim() !== "" &&
+    notesBody.value.trim() === "" &&
+    category.value.trim() === ""
+  ) {
+    notesbodyError.textContent = "Notes cannot be empty!";
+    categoryError.textContent = "Category cannot be empty!";
+    return;
+  }
+  if (
+    noteTitle.value.trim() === "" &&
+    notesBody.value.trim() !== "" &&
+    category.value.trim() === ""
+  ) {
+    categoryError.textContent = "Category cannot be empty!";
+    notesTitleError.textContent = "Title cannot be empty!";
+
+    return;
+  }
+  if (
+    category.value.trim() !== "" &&
+    notesBody.value.trim() === "" &&
+    noteTitle.value.trim() === ""
+  ) {
+    notesTitleError.textContent = "Title cannot be empty!";
+    notesbodyError.textContent = "Notes cannot be empty!";
   }
 
   //   writeNoteModal.classList.remove("active");
