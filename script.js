@@ -28,7 +28,7 @@ function displayNotes(notes) {
     <img class="edit-icon" data-id="${note.id}" src="./assests/edit.png" >
     </button>
     <button class="delete">
-    <img class="delete-icon" src="./assests/delete.png"
+    <img class="delete-icon" data-id="${note.id}" src="./assests/delete.png"
     </button>
     </div>
      <h3 class="title" >${note.title}</h3>
@@ -176,5 +176,10 @@ notesContainer.addEventListener("click", (e) => {
     create.textContent = "Update";
 
     writeNoteModal.classList.add("active");
+  } else if (e.target.classList.contains("delete-icon")) {
+    const elementId = e.target.getAttribute("data-id");
+    notesArray = notesArray.filter((note) => note.id !== elementId);
+
+    displayNotes(notesArray);
   }
 });
