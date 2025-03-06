@@ -9,11 +9,42 @@ const notesTitleError = document.querySelector(".notes-title-error");
 const notesbodyError = document.querySelector(".notes-body-error");
 const category = document.querySelector("#category");
 const categoryError = document.querySelector(".category-error");
+const notesContainer = document.querySelector(".notes-container");
 
 let notesArray = [];
 
 function generateID() {
   return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+}
+
+function displayNotes(notes) {
+  const notesMarkup = notes
+    .map((note) => {
+      return `
+    <div class="note">
+    <div class="buttons" >
+    <button class="edit" >
+    <img class="edit-icon" src="./assests/edit.png" >
+    </button>
+    <button class="delete">
+    <img class="delete-icon" src="./assests/delete.png"
+    </button>
+    </div>
+     <h3 class="title" >${note.title}</h3>
+     <p class="description" >${note.note
+       .split(" ")
+       .slice(0, 4)
+       .join(" ")}...</p>
+     <p class="category" >${note.category}</p>
+    </div>
+    `;
+    })
+    .join("");
+
+  console.log(notesMarkup);
+
+  notesContainer.innerHTML = "";
+  notesContainer.innerHTML = notesMarkup;
 }
 
 function createNote(id, title, note, category) {
@@ -24,7 +55,9 @@ function createNote(id, title, note, category) {
     category,
   };
 
+  console.log(newCategory);
   notesArray = [...notesArray, newCategory];
+  displayNotes(notesArray);
 }
 
 triggerModalBtn.addEventListener("click", () => {
@@ -110,7 +143,14 @@ modalform.addEventListener("submit", (e) => {
     notesbodyError.textContent = "Notes cannot be empty!";
   }
 
-  //   writeNoteModal.classList.remove("active");
+  const idValue = generateID();
+  const titleValue = noteTitle.value;
+  const categoryValue = category.value;
+  const noteValue = notesBody.value;
+
+  createNote(idValue, titleValue, noteValue, categoryValue);
+
+  writeNoteModal.classList.remove("active");
 });
 
 //form validation
