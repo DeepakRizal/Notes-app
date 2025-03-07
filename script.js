@@ -10,6 +10,7 @@ const notesbodyError = document.querySelector(".notes-body-error");
 const category = document.querySelector("#category");
 const categoryError = document.querySelector(".category-error");
 const notesContainer = document.querySelector(".notes-container");
+const detailsContainer = document.getElementById("note-details");
 
 let notesArray = JSON.parse(getItemFromLocalStorage()) || [];
 let editingNoteId = null;
@@ -25,7 +26,9 @@ function displayNotes(notes) {
     const notesMarkup = notes
       .map((note) => {
         return `
-    <div class="note" style="opacity: 0; transform: scale(0.9);" >
+    <div class="note" data-id="${
+      note.id
+    }" style="opacity: 0; transform: scale(0.9);" >
     <div class="buttons" >
     <button class="edit" >
     <img class="edit-icon" data-id="${note.id}" src="./assests/edit.png" >
@@ -47,6 +50,14 @@ function displayNotes(notes) {
 
     notesContainer.innerHTML = "";
     notesContainer.innerHTML = notesMarkup;
+
+    document.querySelectorAll(".note").forEach((noteElement) => {
+      noteElement.addEventListener("click", function () {
+        const noteId = this.getAttribute("data-id");
+        const selectedNote = notes.find((n) => n.id == noteId);
+        showNoteDetails(selectedNote);
+      });
+    });
 
     setTimeout(() => {
       document.querySelectorAll(".note").forEach((note) => {
@@ -214,6 +225,21 @@ notesContainer.addEventListener("click", (e) => {
     }, 300);
   }
 });
+
+function showNoteDetails(note) {
+  detailsContainer.innerHTML = `
+    <h2>${note.title}</h2>
+    <p>${note.note}</p>
+    <p><strong>Category:</strong> ${note.category}</p>
+    <button id="close-details">Close</button>
+  `;
+  detailsContainer.style.display = "block";
+
+  // Close button functionality
+  document.querySelector("#close-details").addEventListener("click", () => {
+    detailsContainer.style.display = "none";
+  });
+}
 
 //load the page is mounted for the first time load the notes from local storage
 document.addEventListener("DOMContentLoaded", () => {
