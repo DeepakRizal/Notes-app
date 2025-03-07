@@ -52,7 +52,11 @@ function displayNotes(notes) {
     notesContainer.innerHTML = notesMarkup;
 
     document.querySelectorAll(".note").forEach((noteElement) => {
-      noteElement.addEventListener("click", function () {
+      noteElement.addEventListener("click", function (e) {
+        if (e.target.closest(".edit") || e.target.closest(".delete")) {
+          return;
+        }
+
         const noteId = this.getAttribute("data-id");
         const selectedNote = notes.find((n) => n.id == noteId);
         showNoteDetails(selectedNote);
