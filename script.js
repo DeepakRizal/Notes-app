@@ -11,7 +11,7 @@ const category = document.querySelector("#category");
 const categoryError = document.querySelector(".category-error");
 const notesContainer = document.querySelector(".notes-container");
 
-let notesArray = [];
+let notesArray = JSON.parse(getItemFromLocalStorage()) || [];
 let editingNoteId = null;
 
 function generateID() {
@@ -19,10 +19,13 @@ function generateID() {
 }
 
 function displayNotes(notes) {
-  const notesMarkup = notes
-    .map((note) => {
-      return `
-    <div class="note">
+  if (notes.length === 0) {
+    notesContainer.innerHTML = `<p class="no-notes">No notes to show</p>`;
+  } else {
+    const notesMarkup = notes
+      .map((note) => {
+        return `
+    <div class="note" style="opacity: 0; transform: scale(0.9);" >
     <div class="buttons" >
     <button class="edit" >
     <img class="edit-icon" data-id="${note.id}" src="./assests/edit.png" >
@@ -39,11 +42,20 @@ function displayNotes(notes) {
      <p class="category" >Category: ${note.category}</p>
     </div>
     `;
-    })
-    .join("");
+      })
+      .join("");
 
-  notesContainer.innerHTML = "";
-  notesContainer.innerHTML = notesMarkup;
+    notesContainer.innerHTML = "";
+    notesContainer.innerHTML = notesMarkup;
+
+    setTimeout(() => {
+      document.querySelectorAll(".note").forEach((note) => {
+        note.style.opacity = "1";
+        note.style.transform = "scale(1)";
+        note.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+      });
+    }, 50);
+  }
 }
 
 function createNote(id, title, note, category) {
@@ -54,8 +66,9 @@ function createNote(id, title, note, category) {
     category,
   };
 
-  console.log(newCategory);
   notesArray = [...notesArray, newCategory];
+  console.log(notesArray);
+  setItemToLocalStorage(notesArray);
   displayNotes(notesArray);
 }
 
@@ -67,6 +80,14 @@ function emptyModal() {
   noteTitle.value = "";
   notesBody.value = "";
   category.value = "";
+}
+
+function getItemFromLocalStorage() {
+  return localStorage.getItem("Notes");
+}
+
+function setItemToLocalStorage(items) {
+  return localStorage.setItem("Notes", JSON.stringify(items));
 }
 
 cancel.addEventListener("click", () => {
@@ -93,6 +114,7 @@ modalform.addEventListener("submit", (e) => {
     }
 
     displayNotes(notesArray);
+    setItemToLocalStorage(notesArray);
 
     editingNoteId = null;
     create.textContent = "Create";
@@ -178,8 +200,26 @@ notesContainer.addEventListener("click", (e) => {
     writeNoteModal.classList.add("active");
   } else if (e.target.classList.contains("delete-icon")) {
     const elementId = e.target.getAttribute("data-id");
-    notesArray = notesArray.filter((note) => note.id !== elementId);
+    const noteElement = e.target.closest(".note");
 
-    displayNotes(notesArray);
+    //applying transition
+    noteElement.style.opacity = "0";
+    noteElement.style.transform = "scale(0.9)";
+    noteElement.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+
+    setTimeout(() => {
+      notesArray = notesArray.filter((note) => note.id !== elementId);
+      setItemToLocalStorage(notesArray);
+      displayNotes(notesArray);
+    }, 300);
+  }
+});
+
+//load the page is mounted for the first time load the notes from local storage
+document.addEventListener("DOMContentLoaded", () => {
+  const items = JSON.parse(getItemFromLocalStorage());
+
+  if (items) {
+    displayNotes(items);
   }
 });
