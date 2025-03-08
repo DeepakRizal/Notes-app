@@ -110,6 +110,7 @@ function setItemToLocalStorage(items) {
 
 cancel.addEventListener("click", () => {
   writeNoteModal.classList.remove("active");
+  emptyModal();
 });
 
 modalform.addEventListener("click", (e) => {
@@ -118,6 +119,7 @@ modalform.addEventListener("click", (e) => {
 
 writeNoteModal.addEventListener("click", () => {
   writeNoteModal.classList.remove("active");
+  emptyModal();
 });
 
 modalform.addEventListener("submit", (e) => {
