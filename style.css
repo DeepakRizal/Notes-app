@@ -140,6 +140,7 @@ main {
 /* notes container */
 .notes-container {
   background-color: gray;
+  height: 90%;
   max-height: 70vh;
   min-width: 60vw;
   border-radius: 10px;
