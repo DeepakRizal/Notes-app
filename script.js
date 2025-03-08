@@ -11,6 +11,9 @@ const category = document.querySelector("#category");
 const categoryError = document.querySelector(".category-error");
 const notesContainer = document.querySelector(".notes-container");
 const detailsContainer = document.getElementById("note-details");
+const darkModeButtonEle = document.querySelector(".darkModeBtn");
+const darkModeImageEle = document.querySelector(".darkModeImage");
+const body = document.querySelector("body");
 
 let notesArray = JSON.parse(getItemFromLocalStorage()) || [];
 let editingNoteId = null;
@@ -244,6 +247,12 @@ function showNoteDetails(note) {
     detailsContainer.style.display = "none";
   });
 }
+
+//implementing dark mode functionality
+darkModeButtonEle.addEventListener("click", () => {
+  body.classList.toggle("darkMode");
+  darkModeImageEle.classList.toggle("darkModeImage");
+});
 
 //load the page is mounted for the first time load the notes from local storage
 document.addEventListener("DOMContentLoaded", () => {

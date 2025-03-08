@@ -16,6 +16,7 @@ main {
   min-height: 100vh;
   justify-content: center;
   padding-top: 20px;
+  position: relative;
 }
 
 .trigger-modal-button-container {
@@ -276,6 +277,46 @@ main {
   color: white;
   border: none;
   cursor: pointer;
+}
+
+/* dark mode button */
+.darkModeBtn {
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.darkModeBtn img {
+  width: 30px;
+}
+
+.darkModeImage {
+  filter: invert(100%);
+}
+
+/* dark mode styles  */
+.darkMode {
+  background-color: lightgray;
+}
+
+.darkMode h1 {
+  color: black;
+}
+
+.darkMode .write-note-modal .modal-form {
+  background-color: lightgray;
+}
+
+.darkMode .notes-container {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: rgb(176, 176, 176);
+  border: 1px solid rgb(120, 119, 119);
+}
+
+.darkMode .write-note-modal .modal-form label {
+  color: black;
 }
 
 /* utility classes */
