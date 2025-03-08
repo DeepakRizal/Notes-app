@@ -370,6 +370,7 @@ main {
 @media (max-width: 400px) {
   .notes-container {
     grid-template-columns: repeat(1, 1fr);
+    min-width: 90vw;
   }
   .darkModeBtn {
     top: 5px;
@@ -377,6 +378,10 @@ main {
   }
   .darkModeBtn img {
     width: 20px;
+  }
+
+  .no-notes {
+    grid-column: 1;
   }
 }
 
