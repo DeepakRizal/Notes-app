@@ -14,6 +14,8 @@ const detailsContainer = document.getElementById("note-details");
 const darkModeButtonEle = document.querySelector(".darkModeBtn");
 const darkModeImageEle = document.querySelector(".darkModeImage");
 const body = document.querySelector("body");
+const searchInput = document.querySelector(".search-input");
+const searchBtn = document.querySelector(".search-btn");
 
 let notesArray = JSON.parse(getItemFromLocalStorage()) || [];
 let editingNoteId = null;
@@ -254,6 +256,20 @@ function showNoteDetails(note) {
 darkModeButtonEle.addEventListener("click", () => {
   body.classList.toggle("darkMode");
   darkModeImageEle.classList.toggle("darkModeImage");
+});
+
+//search functionality
+searchBtn.addEventListener("click", () => {
+  const searchQuery = searchInput.value;
+
+  const queryNotes = notesArray.filter((note) => note.category === searchQuery);
+  displayNotes(queryNotes);
+});
+
+searchInput.addEventListener("input", () => {
+  if (searchInput.value === "") {
+    displayNotes(notesArray);
+  }
 });
 
 //load the page is mounted for the first time load the notes from local storage

@@ -34,7 +34,7 @@ main {
 
 .container h1 {
   color: white;
-  margin-bottom: 12px;
+  margin-bottom: 3px;
 }
 
 .write-note-modal {
@@ -317,6 +317,26 @@ main {
 
 .darkMode .write-note-modal .modal-form label {
   color: black;
+}
+
+/* header styles */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.search-box-container input {
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.search-box-container button {
+  padding: 7px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* utility classes */
