@@ -260,7 +260,7 @@ darkModeButtonEle.addEventListener("click", () => {
 
 //search functionality
 searchBtn.addEventListener("click", () => {
-  const searchQuery = searchInput.value;
+  const searchQuery = searchInput.value.toLowerCase().trim();
 
   const queryNotes = notesArray.filter((note) => note.category === searchQuery);
   displayNotes(queryNotes);
